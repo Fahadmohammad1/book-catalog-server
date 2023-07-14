@@ -6,6 +6,11 @@ import httpStatus from 'http-status'
 const signUpUser = async (userData : IUser) => {
     const createdUser = await User.create(userData)
 
+    const isUserExist = await User.findOne({email : userData.email})
+    if(isUserExist){
+        throw new ApiError(httpStatus.CONFLICT, 'User already exist, Please Login')
+    }
+
     if(!createdUser) {
         throw new ApiError(httpStatus.BAD_REQUEST, 'Failed To Sign Up')
     }

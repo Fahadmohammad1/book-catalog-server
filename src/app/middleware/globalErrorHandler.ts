@@ -3,6 +3,7 @@ import { IGenericErrorMessage } from '../../interfaces/error'
 import handleValidationError from '../../errors/handleValidationError'
 import config from '../../config'
 import ApiError from '../../errors/ApiError'
+import handleDuplicateError from '../../errors/handleDuplicateError'
 
 const globalErrorHandler: ErrorRequestHandler = (error, req, res, next) => {
   let statusCode = 500
@@ -15,7 +16,15 @@ const globalErrorHandler: ErrorRequestHandler = (error, req, res, next) => {
     statusCode = simplifiedError.statusCode
     message = simplifiedError.message
     errorMessages = simplifiedError.errorMessages
-  }  else if (error instanceof Error) {
+  } 
+  else if (error.name === 'MongoServerError' && error.code === 11000) {
+    const simplifiedError = handleDuplicateError(error)
+
+    statusCode = simplifiedError.statusCode
+    message = simplifiedError.message
+    errorMessages = simplifiedError.errorMessages
+  } 
+    else if (error instanceof Error) {
     message = error?.message
     errorMessages = error?.message
       ? [
