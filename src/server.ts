@@ -36,9 +36,3 @@ process.on('unhandledRejection', error => {
 
 main().catch(error => console.log('from main function', error))
 
-// process.on('SIGTERM', () => {
-//   logger.info('SIGTERM is received')
-//   if (server) {
-//     server.close()
-//   }
-// })
