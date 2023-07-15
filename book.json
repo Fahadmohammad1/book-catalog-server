@@ -1,0 +1,62 @@
+[
+  {
+    "title": "Book 1",
+    "author": ["Author 1", "Author 2"],
+    "genre": "Mystery",
+    "publicationDate": "12.02.2020"
+  },
+  {
+    "title": "Book 2",
+    "author": ["Author 3"],
+    "genre": "Sci-Fi",
+    "publicationYear": 2018
+  },
+  {
+    "title": "Book 3",
+    "author": ["Author 4"],
+    "genre": "Fantasy",
+    "publicationYear": 2022
+  },
+  {
+    "title": "Book 4",
+    "author": ["Author 5", "Author 6"],
+    "genre": "Thriller",
+    "publicationYear": 2017
+  },
+  {
+    "title": "Book 5",
+    "author": ["Author 7"],
+    "genre": "Historical Fiction",
+    "publicationYear": 2021
+  },
+  {
+    "title": "Book 6",
+    "author": ["Author 8"],
+    "genre": "Romance",
+    "publicationYear": 2019
+  },
+  {
+    "title": "Book 7",
+    "author": ["Author 9", "Author 10"],
+    "genre": "Biography",
+    "publicationYear": 2023
+  },
+  {
+    "title": "Book 8",
+    "author": ["Author 11"],
+    "genre": "Horror",
+    "publicationYear": 2022
+  },
+  {
+    "title": "Book 9",
+    "author": ["Author 12", "Author 13"],
+    "genre": "Science",
+    "publicationYear": 2020
+  },
+  {
+    "title": "Book 10",
+    "author": ["Author 14"],
+    "genre": "Drama",
+    "publicationYear": 2021
+  }
+]
