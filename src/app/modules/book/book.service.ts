@@ -58,10 +58,15 @@ const updateBook = async (id : string, updatedData : IBook) => {
   const result = await Book.findByIdAndUpdate({_id : id}, updatedData, {new : true} )
   return result
 }
+const deleteBook = async (id : string) => {
+  const result = await Book.findByIdAndDelete({_id : id})
+  return result
+}
 
 export const BookService = {
   addNewBook,
   getAllBooks,
   getSingleBook,
-  updateBook
+  updateBook,
+  deleteBook
 }
