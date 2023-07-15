@@ -37,7 +37,10 @@ const getAllBooks = async (filters: IBookFilters) => {
     });
   }
 
-  const books = await Book.find({$and : conditions})
+  const whereConditions =
+    conditions.length > 0 ? { $and: conditions } : {};
+
+  const books = await Book.find(whereConditions)
 
   if (!books) {
     throw new ApiError(httpStatus.BAD_REQUEST, 'Failed to get books')
@@ -46,7 +49,13 @@ const getAllBooks = async (filters: IBookFilters) => {
   return books
 }
 
+const getSingleBook = async (id : string) => {
+  const book = await Book.findOne({_id : id})
+  return book
+}
+
 export const BookService = {
   addNewBook,
   getAllBooks,
+  getSingleBook
 }
