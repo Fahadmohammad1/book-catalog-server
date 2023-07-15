@@ -14,7 +14,17 @@ const signUpUser = async (userData: IUser) => {
     throw new ApiError(httpStatus.BAD_REQUEST, 'Failed To Sign Up')
   }
 
-  return createdUser
+  const { email: userEmail } = createdUser
+  const accessToken = jwtHelpers.createToken(
+    { userEmail },
+    config.jwt.secret as Secret,
+    config.jwt.expires_in as string
+  )
+
+  return {
+    createdUser,
+    accessToken
+  }
 }
 
 const loginUser = async (userData: IUserLogin) => {
