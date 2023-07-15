@@ -5,6 +5,9 @@ import { BookService } from "./book.service"
 import httpStatus from "http-status"
 import { bookFilterableFields } from "./book.constant"
 import pick from "../../../shared/pick"
+import ApiError from "../../../errors/ApiError"
+import { JwtPayload } from "jsonwebtoken"
+import { Book } from "./book.model"
 
 const addNewBook = catchAsync(async (req: Request, res: Response) => {
     const {...bookData} = req.body
@@ -45,7 +48,15 @@ const getSingleBook = catchAsync(async (req: Request, res: Response) => {
 
 const updateBook = catchAsync(async (req: Request, res: Response) => {
     const {id} = req.params
+    const {userEmail} = req.user as JwtPayload
     const {...bookData} = req.body
+
+    const availableBook = await Book.findOne({_id : id})
+
+    if(availableBook && userEmail !== availableBook?.addedBy) {
+      throw new ApiError(httpStatus.FORBIDDEN, 'Forbidden Access')
+    }
+
     const result = await BookService.updateBook(id, bookData)
   
     sendResponse(res, {
