@@ -19,9 +19,13 @@ const handleDuplicateError = (
         }
     ]
     const statusCode = 400
+    let duplicateValue = null
+    if(error.keyValue) {
+      duplicateValue = Object.keys(error.keyPattern)
+    }
     return {
       statusCode,
-      message: 'Email is already in use',
+      message: `${duplicateValue} is already in use`,
       errorMessages: errors,
     }
   }

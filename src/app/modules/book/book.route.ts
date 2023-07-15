@@ -5,4 +5,6 @@ const router = express.Router()
 
 router.post('/add-book', BookController.addNewBook)
 
+router.get('/', BookController.getAllBooks)
+
 export const BookRoutes = router

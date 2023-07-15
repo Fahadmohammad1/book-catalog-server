@@ -4,7 +4,7 @@ import { IBook } from "./book.interface"
 import { Book } from "./book.model"
 
 
-const addNewBook = async (bookData: IBook) => {
+const addNewBook = async (bookData: IBook) : Promise<IBook | null> => {
     
     const addedBook = await Book.create(bookData)
 
@@ -15,6 +15,17 @@ const addNewBook = async (bookData: IBook) => {
     return addedBook
   }
 
+const getAllBooks = async () => {
+    const books = await Book.find({})
+
+    if(!books) {
+        throw new ApiError(httpStatus.BAD_REQUEST, 'Failed to get books')
+    }
+
+    return books
+}
+
 export const BookService = {
-    addNewBook
+    addNewBook,
+    getAllBooks
 }
