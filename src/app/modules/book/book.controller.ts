@@ -69,6 +69,14 @@ const updateBook = catchAsync(async (req: Request, res: Response) => {
 
 const deleteBook = catchAsync(async (req: Request, res: Response) => {
     const {id} = req.params
+    const {userEmail} = req.user as JwtPayload
+
+    const availableBook = await Book.findOne({_id : id})
+
+    if(availableBook && userEmail !== availableBook?.addedBy) {
+      throw new ApiError(httpStatus.FORBIDDEN, 'Forbidden Access')
+    }
+
     const result = await BookService.deleteBook(id)
   
     sendResponse(res, {
