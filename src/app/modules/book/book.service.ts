@@ -54,8 +54,14 @@ const getSingleBook = async (id : string) => {
   return book
 }
 
+const updateBook = async (id : string, updatedData : IBook) => {
+  const result = await Book.findByIdAndUpdate({_id : id}, updatedData, {new : true} )
+  return result
+}
+
 export const BookService = {
   addNewBook,
   getAllBooks,
-  getSingleBook
+  getSingleBook,
+  updateBook
 }

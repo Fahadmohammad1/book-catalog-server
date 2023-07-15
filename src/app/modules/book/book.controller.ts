@@ -43,8 +43,22 @@ const getSingleBook = catchAsync(async (req: Request, res: Response) => {
     })
   })
 
+const updateBook = catchAsync(async (req: Request, res: Response) => {
+    const {id} = req.params
+    const {...bookData} = req.body
+    const result = await BookService.updateBook(id, bookData)
+  
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
+      success: true,
+      message: 'Book updated successfully!',
+      data: result,
+    })
+  })
+
 export const BookController = {
     addNewBook,
     getAllBooks,
-    getSingleBook
+    getSingleBook,
+    updateBook
 }

@@ -10,4 +10,7 @@ router.post('/add-book', BookController.addNewBook)
 
 router.get('/', BookController.getAllBooks)
 
+
+router.patch('/:id', BookController.updateBook)
+
 export const BookRoutes = router
