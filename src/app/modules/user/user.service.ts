@@ -41,7 +41,7 @@ const loginUser = async (userData: IUserLogin) => {
     throw new ApiError(httpStatus.UNAUTHORIZED, 'Password is incorrect')
   }
 
-  const { email: userEmail } = isUserExist
+  const { email: userEmail, name } = isUserExist
   const accessToken = jwtHelpers.createToken(
     { userEmail },
     config.jwt.secret as Secret,
@@ -55,6 +55,8 @@ const loginUser = async (userData: IUserLogin) => {
   )
 
   return {
+    name,
+    email,
     accessToken,
     refreshToken
   }
