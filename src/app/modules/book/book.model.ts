@@ -28,12 +28,6 @@ const BookSchema = new Schema<IBook, BookModel>(
       year : {
         type : String,
       },
-      review : {
-        type : {
-          email : String,
-          reviewText : String
-        }
-      }
     },
     {
       timestamps: true,

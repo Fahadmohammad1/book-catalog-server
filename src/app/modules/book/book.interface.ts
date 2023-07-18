@@ -1,10 +1,5 @@
 import { Model} from "mongoose"
 
-export type IReview = {
-  email : string;
-  reviewText : string
-}
-
 export type IBook = {
     title: string;
     author: string;
@@ -12,7 +7,6 @@ export type IBook = {
     publicationDate: Date
     addedBy : string
     year : string
-    review? : IReview[]
 }
 
 export type IBookFilters = {
