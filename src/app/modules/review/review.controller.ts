@@ -21,7 +21,8 @@ const postReview = catchAsync(async (req: Request, res: Response) => {
     })
   
   const getReview = catchAsync(async (req: Request, res: Response) => {
-      const {bookId} = req.params
+      const bookId = req.params.id
+     
       const result = await ReviewService.getReview(bookId)
     
       sendResponse(res, {

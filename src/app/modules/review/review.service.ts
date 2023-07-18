@@ -21,7 +21,7 @@ const postReview = async (review : IReview) => {
   }
   
 const getReview = async (bookId : string) => {
-    const review = await Review.find({_id : bookId})
+    const review = await Review.find({bookId : bookId})
 
     if(!review) {
         throw new ApiError(httpStatus.BAD_REQUEST, 'Review not found')
