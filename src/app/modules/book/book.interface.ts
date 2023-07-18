@@ -6,7 +6,7 @@ export type IBook = {
     genre: string;
     publicationDate: Date
     addedBy : string
-    year : string
+    year? : string
 }
 
 export type IBookFilters = {
