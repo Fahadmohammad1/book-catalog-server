@@ -25,6 +25,9 @@ const BookSchema = new Schema<IBook, BookModel>(
         type : String,
         required : true
       },
+      year : {
+        type : String,
+      },
       review : {
         type : {
           email : String,

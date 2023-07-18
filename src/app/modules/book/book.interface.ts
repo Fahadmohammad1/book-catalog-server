@@ -11,6 +11,7 @@ export type IBook = {
     genre: string;
     publicationDate: Date
     addedBy : string
+    year : string
     review? : IReview[]
 }
 

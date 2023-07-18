@@ -56,7 +56,7 @@ const loginUser = async (userData: IUserLogin) => {
 
   return {
     name,
-    userEmail,
+    email,
     accessToken,
     refreshToken
   }
