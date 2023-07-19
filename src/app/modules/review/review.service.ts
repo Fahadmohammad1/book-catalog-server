@@ -4,11 +4,6 @@ import { IReview } from "./review.interface"
 import { Review } from "./review.model"
 
 
-
-
-
-
-
 const postReview = async (review : IReview) => {
     
     const result = await Review.create(review)

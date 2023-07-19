@@ -1,11 +1,10 @@
-import { Model } from "mongoose";
-
+import { Model } from 'mongoose'
 
 export type IReview = {
-    bookId : string
-    email : string
-    name : string;
-    reviewText : string
-  }
+  bookId: string
+  email: string
+  name: string
+  reviewText: string
+}
 
-  export type ReviewModel = Model<IReview, Record<string, unknown>>
+export type ReviewModel = Model<IReview, Record<string, unknown>>

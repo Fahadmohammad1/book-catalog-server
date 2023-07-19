@@ -4,10 +4,6 @@ import sendResponse from "../../../shared/sendResponse";
 import { Request, Response } from "express";
 import { ReviewService } from "./review.service";
 
-
-
-
-
 const postReview = catchAsync(async (req: Request, res: Response) => {
      const reviewData = req.body
       const result = await ReviewService.postReview(reviewData)
