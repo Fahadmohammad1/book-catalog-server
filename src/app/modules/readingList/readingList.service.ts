@@ -31,10 +31,12 @@ const getReadinglist = async (userEmail : string) => {
 
 const updateReadinglist = async (email: string, data : IWishList) => {
     const { book, ...update} = data 
+    
     const updatedBook = await ReadingList.findOneAndUpdate({email : email, book : book}, update, {new : true})
 
+    
    if(!updatedBook) {
-    throw new ApiError(httpStatus.BAD_REQUEST, 'Failed update book')
+    throw new ApiError(httpStatus.BAD_REQUEST, 'Failed to update book')
    }
 
    return updatedBook
