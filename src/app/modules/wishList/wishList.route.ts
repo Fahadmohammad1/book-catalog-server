@@ -1,10 +1,12 @@
 import express from 'express'
+import { WishListController } from './wishList.controller'
 
 const router = express.Router()
 
-router.post('/add-to-wishlist')
-router.get('/:email')
+router.get('/:email', WishListController.getWishlist)
+
+router.post('/add', WishListController.addToWishlist)
 
 
 
-export const BookListRoutes = router
+export const WishListRoutes = router

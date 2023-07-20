@@ -17,17 +17,18 @@ const addToWishlist = catchAsync(async (req: Request, res: Response) => {
    })
  
  const getWishlist = catchAsync(async (req: Request, res: Response) => {
-     
+    const {email} = req.params
+  const result = await WishListService.getWishlist(email)
    
      sendResponse(res, {
        statusCode: httpStatus.OK,
        success: true,
        message: 'Wishlist retrieved successfully!',
-       data: '',
+       data: result,
      })
    })
 
-export const ReviewController = {
+export const WishListController = {
    addToWishlist,
    getWishlist
 }

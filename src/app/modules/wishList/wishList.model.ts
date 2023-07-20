@@ -3,7 +3,7 @@ import { IBook } from '../book/book.interface'
 
 export type IWishList = {
   email: string
-  bookId: Schema.Types.ObjectId | IBook
+  book: Schema.Types.ObjectId | IBook
 }
 
 export type WishListModel = Model<IWishList, Record<string, unknown>>
@@ -14,7 +14,7 @@ const wishListSchema = new Schema<IWishList, WishListModel>(
       type: String,
       required: true,
     },
-    bookId: {
+    book: {
       type: Schema.Types.ObjectId,
       ref: 'Book',
       required: true,
