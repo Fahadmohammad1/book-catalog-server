@@ -29,9 +29,9 @@ const getReadinglist = async (userEmail : string) => {
     return list
   }
 
-const updateReadinglist = async (data : IWishList) => {
-    const {email , book, ...update} = data 
-    const updatedBook = await ReadingList.findOneAndUpdate({email : email, book : book}, update)
+const updateReadinglist = async (email: string, data : IWishList) => {
+    const { book, ...update} = data 
+    const updatedBook = await ReadingList.findOneAndUpdate({email : email, book : book}, update, {new : true})
 
    if(!updatedBook) {
     throw new ApiError(httpStatus.BAD_REQUEST, 'Failed update book')

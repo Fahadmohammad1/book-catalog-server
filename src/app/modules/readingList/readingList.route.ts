@@ -1,12 +1,12 @@
 import express from 'express'
+import { ReadingListController } from './readingList.controller'
 
 const router = express.Router()
 
-router.get('/:email',)
+router.get('/:email', ReadingListController.getReadingList)
 
-router.post('/add',)
+router.patch('/:email', ReadingListController.updateReadinglist)
 
-router.patch('/')
+router.post('/add', ReadingListController.addToReadingList)
 
-
-export const WishListRoutes = router
+export const ReadingListRoutes = router

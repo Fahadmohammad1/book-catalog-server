@@ -5,7 +5,7 @@ import httpStatus from "http-status"
 import { ReadingListService } from "./readingList.service"
 
 
-const addToWishlist = catchAsync(async (req: Request, res: Response) => {
+const addToReadingList = catchAsync(async (req: Request, res: Response) => {
   const data = req.body
   const result = await ReadingListService.addToReadingList(data)
    
@@ -17,7 +17,7 @@ const addToWishlist = catchAsync(async (req: Request, res: Response) => {
      })
    })
  
- const getWishlist = catchAsync(async (req: Request, res: Response) => {
+ const getReadingList = catchAsync(async (req: Request, res: Response) => {
     const {email} = req.params
   const result = await ReadingListService.getReadinglist(email)
    
@@ -29,9 +29,10 @@ const addToWishlist = catchAsync(async (req: Request, res: Response) => {
      })
    })
 
- const updateWishlist = catchAsync(async (req: Request, res: Response) => {
-    const data = req.body
-  const result = await ReadingListService.updateReadinglist(data)
+ const updateReadinglist = catchAsync(async (req: Request, res: Response) => {
+    const {email} = req.params
+    const {...data} = req.body
+  const result = await ReadingListService.updateReadinglist(email, data)
    
      sendResponse(res, {
        statusCode: httpStatus.OK,
@@ -41,8 +42,8 @@ const addToWishlist = catchAsync(async (req: Request, res: Response) => {
      })
    })
 
-export const WishListController = {
-   addToWishlist,
-   getWishlist,
-   updateWishlist
+export const ReadingListController = {
+  addToReadingList,
+   getReadingList,
+   updateReadinglist
 }
