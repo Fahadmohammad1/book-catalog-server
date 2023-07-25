@@ -5,6 +5,7 @@ export type IBook = {
     author: string;
     genre: string;
     publicationDate: Date
+    imageUrl : string
     addedBy : string
     year? : string
 }

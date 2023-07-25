@@ -3,7 +3,6 @@ import ApiError from "../../../errors/ApiError"
 import { IReadingList, ReadingList } from "./readingList.model"
 import { IWishList } from "../wishList/wishList.model"
 
-
 const addToReadingList = async (data : IReadingList) => {
     const isExist = await ReadingList.findOne({email : data.email, book : data.book})
 
